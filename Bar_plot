@@ -1,0 +1,46 @@
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams['axes.linewidth']=2.5
+plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams["font.style"] = "normal"
+plt.rcParams["font.size"]=12
+plt.rcParams["legend.frameon"] = False
+plt.rcParams["legend.fancybox"] = False
+plt.rcParams["legend.fontsize"] = 15 
+legend_properties = {'weight':'bold'}
+
+
+# set width of bar
+barWidth = 0.25
+fig = plt.subplots(figsize =(12, 8))
+ 
+# set height of bar
+CASSCF = [ 110.7, 87.7, 147, 152.6, 106.6, 41.8, 93.9]
+NEVPT2 = [141.1, 93.5, 114.1, 82.9, 70.4, 61.4, 55]
+
+ 
+# Set position of bar on X axis
+br1 = np.arange(len(CASSCF))
+br2 = [x + barWidth for x in br1]
+
+
+
+
+# Make the plot
+plt.bar(br1, CASSCF, color ='r', width = barWidth, edgecolor ='black', label ='CASSCF')
+plt.bar(br2, NEVPT2, color ='g', width = barWidth, edgecolor ='black', label ='NEVPT2')
+
+
+ 
+# Adding Xticks
+plt.xlabel('', fontweight ='bold', fontsize = 15)
+plt.xticks(fontweight = 'bold', fontsize = 13, rotation=25)
+plt.yticks(fontweight = 'bold', fontsize = 13 )
+plt.ylabel(' $\mathbf{ 2J \: cm^{-1}}$', fontweight ='bold', fontsize = 15)
+plt.xticks([r + barWidth for r in range(len(CASSCF))],
+        ['CAS(2,2)', 'CAS(4,4)', 'CAS(6,6)', 'CAS(10,8)', 'CAS(14,12)', 'CAS(16,14)', 'CAS(18,14)',])
+
+plt.legend(prop=legend_properties)
+
+plt.legend()
+plt.show()
